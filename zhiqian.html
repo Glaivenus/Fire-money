@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>电子烧纸钱</title>
+  <title>烧纸钱</title>
   <style>
     body {
       background-color: black;
@@ -14,15 +14,27 @@
     }
 	  
 	      #p {
-      font-size: 200%;
+      font-size: 100%;
       color: white;
+	  top: 70%;
+      left: 40%;
+	  z-index: 1;
+	  }
+	  
+	  
+	   #p2 {
+      font-size: 100%;
+      color: white;
+	  top: 70%;
+      left: 40%;
+	  z-index: 1;
 	  }
 	  
     #counter {
 	 	  position: relative;
       top: 50%;
       left: 40%;
-      font-size: 200%;
+      font-size: 100%;
       color: white;
 	  z-index: 1;
     }
@@ -55,9 +67,12 @@
   </style>
 </head>
 <body>
-  <h1>电子烧纸钱</h1>
+  <h1>赛博烧纸钱</h1>
   <h2>点击屏幕烧纸钱</h2>
-  <p id="counter">0</p>
+  <p id="counter">一定时间不加纸钱火会熄灭。<br>纸钱一次加太多会火力全开。<br>
+	  火灭后纸钱归零，因为你的心不诚【。<br>
+	虽然纸钱素材瞎做的，但还是帮我烧点，谢谢。</p>
+
   <img id="money" src="money.gif">
   <img id="fire" src="fire.gif">
   <script>
@@ -119,6 +134,7 @@
 
     // 初始化
     hideFire();
+	hideMoney();
   </script>
 </body>
 </html>
