@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>电子烧纸钱</title>
+  <style>
+    body {
+      background-color: black;
+    }
+    h1, h2 {
+      color: white;
+	  position: relative;
+      left: 40%;
+	  z-index: 1;
+    }
+	  
+	      #p {
+      font-size: 200%;
+      color: white;
+	  }
+	  
+    #counter {
+	 	  position: relative;
+      top: 50%;
+      left: 40%;
+      font-size: 200%;
+      color: white;
+	  z-index: 1;
+    }
+    #money {
+      width: 60%;
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      z-index: 1;
+    }
+  #fire {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+  }
+  /* 在移动端，让 money 更大 */
+  @media (max-width: 768px) {
+    #money {
+      width: 300%;
+    }
+  }
+	  
+.fire2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+  </style>
+</head>
+<body>
+  <h1>电子烧纸钱</h1>
+  <h2>点击屏幕烧纸钱</h2>
+  <p id="counter">0</p>
+  <img id="money" src="money.gif">
+  <img id="fire" src="fire.gif">
+  <script>
+    var counter = 0;
+    var fireElement = document.getElementById('fire');
+    var moneyElement = document.getElementById('money');
+
+    // 点击事件处理函数
+    function clickHandler() {
+      counter++;
+      document.getElementById('counter').textContent = "冥币金额：" + counter*1000000 + " 圆";
+      showMoney();
+      if (counter >= 10) {
+        showFire2();
+      } else {
+        showFire();
+      }
+    }
+
+    // 显示 money.gif
+    function showMoney() {
+      moneyElement.style.display = 'block';
+      setTimeout(hideMoney, 500);
+    }
+
+    // 隐藏 money.gif
+    function hideMoney() {
+      moneyElement.style.display = 'none';
+    }
+
+    // 显示 fire.gif
+    function showFire() {
+      fireElement.src = 'fire.gif';
+      fireElement.style.display = 'block';
+      setTimeout(hideFire, 30000);
+    }
+
+    // 隐藏 fire.gif
+    function hideFire() {
+      fireElement.style.display = 'none';
+    }
+
+    // 显示 fire2.gif
+    function showFire2() {
+      fireElement.src = 'fire2.gif';
+      fireElement.style.display = 'block';
+      setTimeout(hideFire, 20000);
+      setTimeout(resetCounter, 20000);
+    }
+
+    // 重置计数器
+    function resetCounter() {
+      counter = 0;
+      document.getElementById('counter').textContent = counter;
+    }
+
+    // 监听点击事件
+    document.addEventListener('click', clickHandler);
+
+    // 初始化
+    hideFire();
+  </script>
+</body>
+</html>
